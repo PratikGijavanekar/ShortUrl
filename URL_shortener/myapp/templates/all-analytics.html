@@ -1,50 +1,119 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Custom URL Shortener</title>
+    <title>Custom URL Shortener</title>
 
-	<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css" media="screen">
-	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="screen">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Include Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333;
+            padding-top: 50px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        .url_options {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .url_options p {
+            margin-bottom: 10px;
+        }
+
+        .url_link {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .short_url_l {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .short_url_l:hover {
+            text-decoration: underline;
+        }
+
+        .btn-cutt {
+            background-color: #007bff; /* Blue color */
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .btn-cutt:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+        .allClicks {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
-<body class="pace-done lout_stats30">
-	<main id="content" role="main" class="wyniki wyniki_all">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 page_log_in mt-0">
-					<h2 class="h1" style="text-align: center;">All Links Analytics</h2>
-				</div>
+<body>
+    <main id="content" role="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center">All Links Analytics</h2>
+                </div>
 
-                
+                <!-- Loop through rows -->
                 {% for object in rows %}
-
-
-				<div class="url_options url_stats_o" id="1">
-					<p class="data_link">{{ object.date }}</p>
-					<p class="url_link">
-						{{ object.long_url }} 
-					</p>
-					<p id="link" class="link_element">
-						<a href=" {{ object.short_url }} " class="short_url_l" target="blank">
-                            {{ object.short_url }} </a>
-					</p>
-					<div class="stats_total btn-cutt click_stats btn_norm">
-						<div>Total clicks <strong class="allClicks">{{ object.clicks }}</strong></div>
-					</div>
-				</div>
-
+                <div class="col-md-6">
+                    <div class="url_options">
+                        <p class="data_link">{{ object.date }}</p>
+                        <p class="url_link">
+                            {{ object.long_url }} 
+                        </p>
+                        <p class="link_element">
+                            <a href="{{ object.short_url }}" class="short_url_l" target="_blank">
+                                {{ object.short_url }}
+                            </a>
+                        </p>
+                        <div class="stats_total btn-cutt click_stats btn_norm">
+                            <div>Total clicks <strong class="allClicks">{{ object.clicks }}</strong></div>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
-                
-			</div>
-		</div>
-	</main>
+            </div>
+        </div>
+    </main>
 
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-bDJyZjwHu0fNBnIy6MXhj4bR8RrMA4bFz/D95JkhIyJ8zqazwX6qB86PFOUNlHiF" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk5FR/6a3u6pooxs1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+
+
+
